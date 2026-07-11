@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ml-inference-k8s-config
+  labels:
+    app: ml-inference-k8s
+data:
+  # Runtime configuration injected as environment variables (see envFrom in
+  # deployment.yaml).
+  LOG_LEVEL: "INFO"
+  # The image bakes the trained artifact in at /app/digits_model.joblib during
+  # the Docker build; override here to point elsewhere if you mount a volume.
+  MODEL_PATH: "/app/digits_model.joblib"
